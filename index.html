@@ -1,66 +1,481 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Protolex</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protolex - Protocol Buffer Parser for Go</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="/assets/logo/protolex.png" alt="Protolex Logo" class="h-10">
+        </div>
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+          <a href="#installation" class="text-gray-600 hover:text-blue-600">Installation</a>
+          <a href="#usage" class="text-gray-600 hover:text-blue-600">Usage</a>
+          <a href="#api" class="text-gray-600 hover:text-blue-600">API</a>
+          <a href="https://github.com/bedirhangull/protolex" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors" target="_blank">
+            GitHub
+          </a>
+        </div>
+        <div class="md:hidden">
+          <button class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" aria-label="toggle menu">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+              <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Protocol Buffer Parser for Go</h1>
+      <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+        A powerful Go package for parsing and analyzing Protocol Buffer (protobuf) files. Extract messages, enums, services and more with ease.
+      </p>
+      <div class="flex justify-center space-x-4">
+        <a href="https://github.com/bedirhangull/protolex" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-semibold" target="_blank">Get Started</a>
+        <a href="#features" class="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-semibold mb-4">Message Parsing</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• Extract message blocks</li>
+            <li>• Analyze message fields</li>
+            <li>• Handle nested structures</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-semibold mb-4">Enum Analysis</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• Parse enum definitions</li>
+            <li>• Extract enum fields</li>
+            <li>• Handle nested enums</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-semibold mb-4">Service Handling</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• Extract service definitions</li>
+            <li>• Parse RPC methods</li>
+            <li>• Analyze streaming patterns</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-semibold mb-4">Nested Packages</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• Handle nested package structures</li>
+            <li>• Extract package declarations</li>
+            <li>• Analyze package relationships</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-semibold mb-4">Field Analysis</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• Extract field details</li>
+            <li>• Identify field types</li>
+            <li>• Handle reserved fields</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-semibold mb-4">Syntax Handling</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• Parse syntax declarations</li>
+            <li>• Identify proto versions</li>
+            <li>• Handle imports and options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Section -->
+  <section id="installation" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Installation</h2>
+      <div class="max-w-2xl mx-auto">  
+        <div class="bg-white rounded-lg shadow p-6 mb-8 overflow-hidden">
+          <pre class="language-bash rounded-lg overflow-x-auto"><code>go get github.com/bedirhangull/protolex</code></pre>
+          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+        </div>
+        <p class="text-lg text-center text-gray-600">
+          Simply run the above command to install Protolex in your Go project.
+        </p>
+      </div>
+    </div>
+  </section>
+    
+  <!-- Usage Section -->
+  <section id="usage" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Usage Examples</h2>
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Basic Usage</h3>
+          <div class="bg-gray-900 rounded-lg shadow p-6 mb-4 overflow-hidden">
+            <pre class="language-go rounded-lg overflow-x-auto"><code class="language-go">package main
+
+import (
+  "fmt"
+  "github.com/bedirhangull/protolex"
+)
+
+func main() {
+  // Read and parse proto file
+  proto, err := protolex.ReadProtoFile("./path/to/your.proto")
+  if err != nil {
+    fmt.Printf("Error reading proto file: %v\n", err)
+    return
+  }
+
+  // Get all message blocks
+  messages := proto.GetAllMessageBlocks()
+  for _, msg := range messages {
+    fmt.Println("Message:", msg)
+  }
+
+  // Get all enum blocks 
+  enums := proto.GetAllEnumBlocks()
+  for _, enum := range enums {
+    fmt.Println("Enum:", enum)
+  }
+}</code></pre>
+          </div>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Message Analysis</h3>
+          <div class="bg-gray-900 rounded-lg shadow p-6 mb-4 overflow-hidden">
+            <pre class="language-go rounded-lg overflow-x-auto"><code class="language-go">// Get a specific message by name
+message := proto.GetMessageByName("User")
+
+// Get all fields in a message
+fields, err := proto.GetAllFieldsByMessageName("User")
+if err != nil {
+  // Handle error
+}
+
+// Get all types used in a message
+types, err := proto.GetAllTypesByMessageName("User")  
+if err != nil {
+  // Handle error  
+}</code></pre>
+          </div>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Enum Parsing</h3>
+          <div class="bg-gray-900 rounded-lg shadow p-6 mb-4 overflow-hidden">
+            <pre class="language-go rounded-lg overflow-x-auto"><code class="language-go">// Get a specific enum by name
+enum := proto.GetEnumByName("Status")
+
+// Get all enum fields
+fields, err := proto.GetAllEnumFieldsByEnumName("Status")
+if err != nil {
+  // Handle error
+}
+
+// Get all enums in a message
+enums, err := proto.GetAllEnumsByMessageName("User")
+if err != nil {
+  // Handle error
+}</code></pre>
+          </div>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API Reference Section -->
+  <section id="api" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">API Reference</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Comprehensive documentation of all available methods in Protolex, organized by functionality. Click a category to jump to its details.
+      </p>
+      
+      <!-- API Navigation -->
+      <div class="flex justify-center mb-8">
+        <nav class="flex space-x-4" aria-label="Tabs">
+          <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 bg-white rounded-md hover:text-gray-700" data-tab="message-operations">Message Operations</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 bg-white rounded-md hover:text-gray-700" data-tab="enum-operations">Enum Operations</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 bg-white rounded-md hover:text-gray-700" data-tab="service-operations">Service Operations</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 bg-white rounded-md hover:text-gray-700" data-tab="package-operations">Package Operations</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 bg-white rounded-md hover:text-gray-700" data-tab="other-operations">Other Operations</a>
+        </nav>
+      </div>
+
+      <!-- API Content -->  
+      <div class="max-w-5xl mx-auto">
+        <!-- Message Operations -->
+        <div id="message-operations" class="api-tab active">
+          <h3 class="text-2xl font-semibold mb-4">Message Operations</h3>
+          <div class="bg-white rounded-xl shadow overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+              <h4 class="text-lg font-semibold">Functions for working with Protocol Buffer messages</h4>
             </div>
-        </header>
-        <section id="home">
-            <div class="container">
-                <h1>Welcome to Protolex</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, quod.
-                </p>
-                <a href="#" class="btn">Read More</a>
+            <div class="divide-y divide-gray-100">
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllMessageBlocks()</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-blue-700 bg-blue-50 rounded-full">Returns []string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all message blocks in the proto file</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetMessageByName(name string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-blue-700 bg-blue-50 rounded-full">Returns string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns a specific message block by its name</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllFieldsByMessageName(messageName string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-blue-700 bg-blue-50 rounded-full">Returns []string, error</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all fields defined in a message</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllTypesByMessageName(messageName string)</span>  
+                  <span class="ml-2 px-3 py-1 text-sm text-blue-700 bg-blue-50 rounded-full">Returns []string, error</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all types used in a message</p>
+              </div>
             </div>
-        </section>
-        <section id="about">
-            <div class="container">
-                <h1>About Us</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, quod.
-                </p>
+          </div>
+        </div>
+        
+        <!-- Enum Operations -->
+        <div id="enum-operations" class="api-tab hidden">
+          <h3 class="text-2xl font-semibold mb-4">Enum Operations</h3>  
+          <div class="bg-white rounded-xl shadow overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-green-600 to-green-700 text-white">
+              <h4 class="text-lg font-semibold">Functions for working with Protocol Buffer enums</h4>
             </div>
-        </section>
-        <section id="services">
-            <div class="container">
-                <h1>Our Services</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, quod.
-                </p>
+            <div class="divide-y divide-gray-100"> 
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllEnumBlocks()</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-green-700 bg-green-50 rounded-full">Returns []string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all enum blocks in the proto file</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">  
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetEnumByName(name string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-green-700 bg-green-50 rounded-full">Returns string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns a specific enum block by its name</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center"> 
+                  <span>GetAllEnumFieldsByEnumName(enumName string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-green-700 bg-green-50 rounded-full">Returns []string, error</span>  
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all fields defined in an enum</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllEnumsByMessageName(messageName string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-green-700 bg-green-50 rounded-full">Returns []string, error</span>
+                </h5>  
+                <p class="mt-2 text-gray-600">Returns all enums used in a message</p>
+              </div>
             </div>
-        </section>
-        <section id="contact">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, quod.
-                </p>
+          </div>
+        </div>
+        
+        <!-- Service Operations -->  
+        <div id="service-operations" class="api-tab hidden"> 
+          <h3 class="text-2xl font-semibold mb-4">Service Operations</h3>
+          <div class="bg-white rounded-xl shadow overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-purple-600 to-purple-700 text-white">  
+              <h4 class="text-lg font-semibold">Functions for working with Protocol Buffer services</h4>
             </div>
-        </section>
-        <footer>
-            <div class="container">
-                <p>&copy; 2021 Protolex</p>
+            <div class="divide-y divide-gray-100">
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllServiceBlocks()</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-purple-700 bg-purple-50 rounded-full">Returns []string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all service blocks in the proto file</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetServiceByName(name string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-purple-700 bg-purple-50 rounded-full">Returns string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns a specific service block by its name</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetRPCByServiceName(serviceName string, RPCname string)</span> 
+                  <span class="ml-2 px-3 py-1 text-sm text-purple-700 bg-purple-50 rounded-full">Returns string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns a specific RPC definition from a service</p>
+              </div>
             </div>
-        </footer>
-    </body>
+          </div>
+        </div>
+        
+        <!-- Package Operations -->
+        <div id="package-operations" class="api-tab hidden">
+          <h3 class="text-2xl font-semibold mb-4">Package Operations</h3>
+          <div class="bg-white rounded-xl shadow overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+              <h4 class="text-lg font-semibold">Functions for working with Protocol Buffer packages</h4>
+            </div>
+            <div class="divide-y divide-gray-100">
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetAllPackages()</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-orange-700 bg-orange-50 rounded-full">Returns []*Package, error</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all packages defined in the proto file</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetPackageByPath(path string)</span>  
+                  <span class="ml-2 px-3 py-1 text-sm text-orange-700 bg-orange-50 rounded-full">Returns *Package, error</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns a specific package by its full path</p>  
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetChildPackagesByPath(parentPath string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-orange-700 bg-orange-50 rounded-full">Returns []*Package, error</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns all child packages of a given package</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">  
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetParentPackageByPath(childPath string)</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-orange-700 bg-orange-50 rounded-full">Returns *Package, error</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns the parent package of a given package</p>
+              </div>
+            </div>
+          </div>  
+        </div>
+
+        <!-- Other Operations -->
+        <div id="other-operations" class="api-tab hidden">
+          <h3 class="text-2xl font-semibold mb-4">Other Operations</h3>
+          <div class="bg-white rounded-xl shadow overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-gray-600 to-gray-700 text-white">
+              <h4 class="text-lg font-semibold">Additional utility functions for Protocol Buffer files</h4>  
+            </div>
+            <div class="divide-y divide-gray-100">
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetSyntax()</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-gray-700 bg-gray-50 rounded-full">Returns string</span>
+                </h5>
+                <p class="mt-2 text-gray-600">Returns the syntax declaration of the proto file</p>
+              </div>
+              <div class="p-6 hover:bg-gray-50 transition-colors">
+                <h5 class="font-mono font-semibold text-gray-900 flex items-center">
+                  <span>GetPackageName()</span>
+                  <span class="ml-2 px-3 py-1 text-sm text-gray-700 bg-gray-50 rounded-full">Returns string</span>  
+                </h5>
+                <p class="mt-2 text-gray-600">Returns the package declaration of the proto file</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <img src="/assets/logo/protolex.png" alt="Protolex Logo" class="h-10 mb-4">
+          <p class="text-gray-400">
+            Protolex is an open-source Go package for parsing and analyzing Protocol Buffer files. It provides a comprehensive set of tools to extract and analyze various components of proto files.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#features" class="text-blue-400 hover:text-blue-300">Features</a></li>
+            <li><a href="#installation" class="text-blue-400 hover:text-blue-300">Installation</a></li>
+            <li><a href="#usage" class="text-blue-400 hover:text-blue-300">Usage</a></li>
+            <li><a href="#api" class="text-blue-400 hover:text-blue-300">API</a></li>
+            <li><a href="https://github.com/bedirhangull/protolex" class="text-blue-400 hover:text-blue-300" target="_blank">GitHub</a></li> 
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Connect</h3>
+          <ul class="space-y-2">
+            <li><a href="https://x.com/bedirhngl" class="text-blue-400 hover:text-blue-300" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/bedirhangull" class="text-blue-400 hover:text-blue-300" target="_blank">GitHub</a></li>  
+            <li><a href="mailto:dev.bedirhangul@gmail.com" class="text-blue-400 hover:text-blue-300">Email</a></li>
+          </ul>  
+        </div>
+      </div>
+      <hr class="border-gray-800 my-8">
+      <div class="text-center text-gray-400">
+        &copy; 2024 Protolex. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.previousElementSibling.querySelector('code');  
+      const code = codeBlock.innerText;
+      navigator.clipboard.writeText(code);
+      button.innerText = 'Copied!';
+      setTimeout(() => {
+        button.innerText = 'Copy';
+      }, 2000);
+    }
+
+    const tabs = document.querySelectorAll('[data-tab]');
+    const apiTabs = document.querySelectorAll('.api-tab');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tabId = this.getAttribute('data-tab');
+
+        tabs.forEach(tab => tab.classList.remove('text-blue-600', 'bg-white'));
+        this.classList.add('text-blue-600', 'bg-white');
+
+        apiTabs.forEach(tabContent => tabContent.classList.add('hidden'));
+        document.getElementById(tabId).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
 </html>
