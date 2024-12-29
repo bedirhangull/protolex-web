@@ -16,18 +16,18 @@
 </head>
 <body class="bg-gray-50">
   <!-- Navigation -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="bg-[#244c5a] shadow-sm sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3">
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
           <img src="./assets/logo/protolex.png" alt="Protolex Logo" class="h-10">
         </div>
         <div class="hidden md:flex space-x-6 items-center">
-          <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
-          <a href="#installation" class="text-gray-600 hover:text-blue-600">Installation</a>
-          <a href="#usage" class="text-gray-600 hover:text-blue-600">Usage</a>
-          <a href="#api" class="text-gray-600 hover:text-blue-600">API</a>
-          <a href="https://github.com/bedirhangull/protolex" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors" target="_blank">
+          <a href="#features" class="text-white hover:text-[#60c4c3]">Features</a>
+          <a href="#installation" class="text-white hover:text-[#60c4c3]">Installation</a>
+          <a href="#usage" class="text-white hover:text-[#60c4c3]">Usage</a>
+          <a href="#api" class="text-white hover:text-[#60c4c3]">API</a>
+          <a href="https://github.com/bedirhangull/protolex" class="bg-[#60c4c3] text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors" target="_blank">
             GitHub
           </a>
         </div>
@@ -43,15 +43,15 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
+  <header class="bg-gradient-to-r from-[#244c5a] to-[#60c4c3] text-white py-20">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">Protocol Buffer Parser for Go</h1>
       <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
         A powerful Go package for parsing and analyzing Protocol Buffer (protobuf) files. Extract messages, enums, services and more with ease.
       </p>
       <div class="flex justify-center space-x-4">
-        <a href="https://github.com/bedirhangull/protolex" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-semibold" target="_blank">Get Started</a>
-        <a href="#features" class="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Learn More</a>
+        <a href="https://github.com/bedirhangull/protolex" class="bg-white text-black px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-semibold" target="_blank">Get Started</a>
+        <a href="#features" class="bg-[#60c4c3] text-white px-6 py-3 rounded-lg transition-colors font-semibold">Learn More</a>
       </div>
     </div>
   </header>
@@ -120,7 +120,7 @@
       <div class="max-w-2xl mx-auto">  
         <div class="bg-white rounded-lg shadow p-6 mb-8 overflow-hidden">
           <pre class="language-bash rounded-lg overflow-x-auto"><code>go get github.com/bedirhangull/protolex</code></pre>
-          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+          <button class="mt-4 bg-[#244c5a] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
         </div>
         <p class="text-lg text-center text-gray-600">
           Simply run the above command to install Protolex in your Go project.
@@ -165,7 +165,7 @@ func main() {
   }
 }</code></pre>
           </div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+          <button class="bg-[#244c5a] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
         </div>
         <div>
           <h3 class="text-xl font-semibold mb-4">Message Analysis</h3>
@@ -185,7 +185,7 @@ if err != nil {
   // Handle error  
 }</code></pre>
           </div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+          <button class="bg-[#244c5a] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
         </div>
         <div>
           <h3 class="text-xl font-semibold mb-4">Enum Parsing</h3>
@@ -205,7 +205,7 @@ if err != nil {
   // Handle error
 }</code></pre>
           </div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
+          <button class="bg-[#244c5a] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="copyCode(this)">Copy</button>
         </div>
       </div>
     </div>
@@ -236,7 +236,7 @@ if err != nil {
         <div id="message-operations" class="api-tab active">
           <h3 class="text-2xl font-semibold mb-4">Message Operations</h3>
           <div class="bg-white rounded-xl shadow overflow-hidden">
-            <div class="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+            <div class="p-6 bg-gradient-to-r from-[#244c5a] to-[#60c4c3] text-white">
               <h4 class="text-lg font-semibold">Functions for working with Protocol Buffer messages</h4>
             </div>
             <div class="divide-y divide-gray-100">
@@ -427,19 +427,19 @@ if err != nil {
         <div>
           <h3 class="text-lg font-semibold mb-4">Links</h3>
           <ul class="space-y-2">
-            <li><a href="#features" class="text-blue-400 hover:text-blue-300">Features</a></li>
-            <li><a href="#installation" class="text-blue-400 hover:text-blue-300">Installation</a></li>
-            <li><a href="#usage" class="text-blue-400 hover:text-blue-300">Usage</a></li>
-            <li><a href="#api" class="text-blue-400 hover:text-blue-300">API</a></li>
-            <li><a href="https://github.com/bedirhangull/protolex" class="text-blue-400 hover:text-blue-300" target="_blank">GitHub</a></li> 
+            <li><a href="#features" class="text-[#60c4c3] hover:text-[#244c5a]">Features</a></li>
+            <li><a href="#installation" class="text-[#60c4c3] hover:text-[#244c5a]">Installation</a></li>
+            <li><a href="#usage" class="text-[#60c4c3] hover:text-[#244c5a]">Usage</a></li>
+            <li><a href="#api" class="text-[#60c4c3] hover:text-[#244c5a]">API</a></li>
+            <li><a href="https://github.com/bedirhangull/protolex" class="text-[#60c4c3] hover:text-[#244c5a]" target="_blank">GitHub</a></li> 
           </ul>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-4">Connect</h3>
           <ul class="space-y-2">
-            <li><a href="https://x.com/bedirhngl" class="text-blue-400 hover:text-blue-300" target="_blank">Twitter</a></li>
-            <li><a href="https://github.com/bedirhangull" class="text-blue-400 hover:text-blue-300" target="_blank">GitHub</a></li>  
-            <li><a href="mailto:dev.bedirhangul@gmail.com" class="text-blue-400 hover:text-blue-300">Email</a></li>
+            <li><a href="https://x.com/bedirhngl" class="text-[#60c4c3] hover:text-[#244c5a]" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/bedirhangull" class="text-[#60c4c3] hover:text-[#244c5a]" target="_blank">GitHub</a></li>  
+            <li><a href="mailto:dev.bedirhangul@gmail.com" class="text-[#60c4c3] hover:text-[#244c5a]">Email</a></li>
           </ul>  
         </div>
       </div>
